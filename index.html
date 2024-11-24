@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人网页</title>
+	
+    <style>
+        body {
+            background-color: rgb(35, 35, 35);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+            overflow: hidden; /* 防止文本溢出 */
+        }
+        span {
+            user-select: none;
+            cursor: default;
+            font-size: 20px;
+            color: blanchedalmond;
+            position: absolute;
+            opacity: 0; /* 初始透明 */
+            transition: opacity 1s, transform 1s; /* 添加过渡效果 */
+        }
+        #welcomeButton {
+            display: none; /* 初始隐藏按钮 */
+            padding: 15px 30px;
+            font-size: 24px;
+            color: white;
+            background-color: royalblue;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* 居中按钮 */
+        }
+		.header-text {
+			text-align: center; /* 中央对齐 */ 
+			color: lightgray; /* 浅灰色 */ 
+			font-size: 20px; /* 字体大小 */
+			position: absolute; /* 绝对定位 */ 
+			top: 10px; /* 距离顶部10px */
+			width: 100%; /* 宽度100%以确保居中 */ 
+		}
+    </style>
+</head>
+<body>
+	<div class="header-text"><strong>#Just Click Anywhere You Like#</strong></div>
+    <button id="welcomeButton" onclick="goToNextPage()">welcome to my world</button>
+    <script>
+        // 设置按顺序出现的文字数组
+        var arr = ["在这披霜戴雪的冬日，一头扎进这沸腾的生命", "命运如同手中的掌纹，无论多么曲折，始终掌握在你的手里", "Be Water","迷雾里寻不见人，那就把自己化为灯塔","太阳在坠落，海浪在发愁"];
+        var currentIndex = 0; // 初始化索引
+
+        document.onclick = function(x) {
+            if (currentIndex < arr.length) {
+                // 创建元素节点对象
+                var span = document.createElement("span");
+                // 获取当前鼠标的坐标
+                span.style.left = x.clientX + "px";
+                span.style.top = x.clientY + "px";
+                
+                // 使用当前索引获取文本，并更新索引
+                span.innerHTML = arr[currentIndex];
+                currentIndex++;
+
+                // 设置span的动画效果
+                document.body.appendChild(span);
+                setTimeout(function() {
+                    span.style.opacity = "1"; // 显示文本
+                    span.style.transform = "translateY(-100px)"; // 上移
+                }, 100);
+                setTimeout(function() {
+                    span.style.opacity = "0"; // 隐藏文本
+                    span.style.transform = "translateY(-230px)"; // 继续上移
+                }, 1500);
+                setTimeout(function() {
+                    document.body.removeChild(span); // 移除文本元素
+                }, 2000); // 2秒后移除
+
+            }
+
+            // 所有文本展示完后，显示按钮
+            if (currentIndex >= arr.length) {
+                document.getElementById("welcomeButton").style.display = "block"; // 显示按钮
+                document.body.onclick = null; // 禁用后续点击事件
+            }
+        }
+
+        function goToNextPage() {
+            window.location.href = "Element.html"; // 跳转到下一个页面
+        }
+    </script>
+</body>
+</html>

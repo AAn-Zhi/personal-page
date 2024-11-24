@@ -1,0 +1,56 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+    display: flex; /* 使用 Flexbox 布局 */
+}
+
+/* 侧边栏样式 */
+.sidebar {
+    width: 15%; /* 固定宽度为17% */
+    background-color: #0D1B23;
+    color: white;
+    top: 0;
+    height: 100vh;
+	position:fixed;/* 高度为100%视口高度 */
+    display: flex; /* 使侧边栏成为一个 flex 容器 */
+    flex-direction: column; /* 垂直排列子元素 */
+    justify-content: flex-start; /* 将内容推到底部 */
+    overflow-y: auto; /* 允许垂直滚动 */
+}
+
+/* 列表样式 */
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0; /* 去掉默认的外边距 */
+}
+
+/* 列表项样式 */
+.sidebar li {
+    padding-top: 15px;
+    padding-right: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+	text-size:15px;
+    text-overflow: ellipsis;
+    text-align: right; /* 文本靠右对齐 */
+}
+
+/* 链接样式 */
+.sidebar a {
+    color: white; /* 链接文本颜色 */
+    text-decoration: none; /* 去掉下划线 */
+    display: block; /* 使链接占据整个列表项的宽度 */
+}
+
+/* 链接悬停样式 */
+.sidebar a:hover {
+    background-color: #061015; /* 鼠标悬停时的背景色 */
+}
+
+/* 内容区域样式 */
+.content {
+    margin-left: 200px; /* 确保内容区域与侧边栏分开 */
+    padding: 20px;
+}
