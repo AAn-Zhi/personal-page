@@ -76,7 +76,7 @@ body
 
 /* 侧边栏样式 */
 .sidebar {
-    width:15%;/* 固定宽度为200px */
+    width:17%;/* 固定宽度为200px */
     background-color:#0D1B23;
     color: white;
     left:0;
